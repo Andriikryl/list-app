@@ -24,6 +24,11 @@ export const TodoPanel: React.FC<TodoPanelProps> = ({ addTodo }) => {
     setTodo({ ...todo, [name]: value });
   };
 
+  const onClick = () => {
+    addTodo({ name: todo.name, description: todo.description });
+    setTodo(DEFAULT_TODO);
+  };
+
   return (
     <div>
       <div>
@@ -51,12 +56,7 @@ export const TodoPanel: React.FC<TodoPanelProps> = ({ addTodo }) => {
         </label>
       </div>
       <div>
-        <Button
-          color="blue"
-          onClick={() =>
-            addTodo({ name: todo.name, description: todo.description })
-          }
-        >
+        <Button color="blue" onClick={onClick}>
           Add
         </Button>
       </div>
