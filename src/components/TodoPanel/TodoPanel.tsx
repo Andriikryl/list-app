@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button } from "../Button/Button";
 
 const DEFAULT_TODO = {
   name: "",
@@ -29,18 +30,18 @@ export const TodoPanel = () => {
       </div>
       <div>
         <label htmlFor="name">
-          <div>name</div>
+          <div>description</div>
           <input
             type="text"
-            id="name"
-            name="name"
+            id="description"
+            name="description"
             onChange={onChange}
-            value={todo.name}
+            value={todo.description}
           />
         </label>
       </div>
       <div>
-        <button>add</button>
+        <Button color="blue">Add</Button>
       </div>
     </div>
   );
