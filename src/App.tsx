@@ -44,12 +44,15 @@ function App() {
     );
   };
 
+  const deletTodo = (id: Todo["id"]) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
   return (
     <div className="app_container">
       <div className="container">
         <Header todoCount={todos.length} />
         <TodoPanel addTodo={addTodo} />
-        <TodoList todos={todos} checkTodo={checkTodo} />
+        <TodoList todos={todos} checkTodo={checkTodo} deletTodo={deletTodo} />
       </div>
     </div>
   );

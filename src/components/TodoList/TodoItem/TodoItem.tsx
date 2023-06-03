@@ -11,9 +11,14 @@ type Todo = {
 interface TodoItem {
   todo: Todo;
   checkTodo: (id: Todo["id"]) => void;
+  deletTodo: (id: Todo["id"]) => void;
 }
 
-export const TodoItem: React.FC<TodoItem> = ({ todo, checkTodo }) => {
+export const TodoItem: React.FC<TodoItem> = ({
+  todo,
+  checkTodo,
+  deletTodo,
+}) => {
   return (
     <div>
       <div
@@ -28,7 +33,9 @@ export const TodoItem: React.FC<TodoItem> = ({ todo, checkTodo }) => {
       </div>
       <div>
         <Button color="blue">Edit</Button>
-        <Button color="orange">Delet</Button>
+        <Button color="orange" onClick={() => deletTodo(todo.id)}>
+          Delet
+        </Button>
       </div>
     </div>
   );
