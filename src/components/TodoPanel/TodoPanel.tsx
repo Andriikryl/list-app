@@ -1,12 +1,22 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button } from "../Button/Button";
+type Todo = {
+  id: number;
+  name: string;
+  description: string;
+  checked: boolean;
+};
 
 const DEFAULT_TODO = {
   name: "",
   description: "",
 };
 
-export const TodoPanel = () => {
+interface TodoPanelProps {
+  addTodo: ({ name, description }: Omit<Todo, "checked" | "id">) => void;
+}
+
+export const TodoPanel: React.FC<TodoPanelProps> = ({ addTodo }) => {
   const [todo, setTodo] = useState(DEFAULT_TODO);
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,7 +51,14 @@ export const TodoPanel = () => {
         </label>
       </div>
       <div>
-        <Button color="blue">Add</Button>
+        <Button
+          color="blue"
+          onClick={() =>
+            addTodo({ name: todo.name, description: todo.description })
+          }
+        >
+          Add
+        </Button>
       </div>
     </div>
   );

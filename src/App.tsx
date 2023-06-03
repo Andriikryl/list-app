@@ -3,6 +3,13 @@ import "./App.css";
 import { Header } from "./components/Header/Header";
 import { TodoPanel } from "./components/TodoPanel/TodoPanel";
 
+type Todo = {
+  id: number;
+  name: string;
+  description: string;
+  checked: boolean;
+};
+
 const DEFAULT_TODO_LIST = [
   { id: 1, name: "task 1", description: "description 1", checked: false },
   { id: 2, name: "task 2", description: "description 2", checked: false },
@@ -18,11 +25,18 @@ const DEFAULT_TODO_LIST = [
 function App() {
   const [todos, setTodos] = React.useState(DEFAULT_TODO_LIST);
 
+  const addTodo = ({ name, description }: Omit<Todo, "checked" | "id">) => {
+    setTodos([
+      ...todos,
+      { id: todos[todos.length - 1].id + 1, description, name, checked: false },
+    ]);
+  };
+
   return (
     <div className="app_container">
       <div className="container">
         <Header todoCount={todos.length} />
-        <TodoPanel />
+        <TodoPanel addTodo={addTodo} />
       </div>
     </div>
   );
