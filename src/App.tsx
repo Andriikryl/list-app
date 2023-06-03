@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { Header } from "./components/Header/Header";
 import { TodoPanel } from "./components/TodoPanel/TodoPanel";
+import { TodoList } from "./components/TodoList/TodoList";
 
 type Todo = {
   id: number;
@@ -37,6 +38,7 @@ function App() {
       <div className="container">
         <Header todoCount={todos.length} />
         <TodoPanel addTodo={addTodo} />
+        <TodoList todos={todos} />
       </div>
     </div>
   );
