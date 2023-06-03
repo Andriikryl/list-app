@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import { Header } from "./components/Header/Header";
 
 const DEFAULT_TODO_LIST = [
   { id: 1, name: "task 1", description: "description 1", checked: false },
@@ -18,7 +19,9 @@ function App() {
 
   return (
     <div className="app_container">
-      <div className="container">todo</div>
+      <div className="container">
+        <Header todoCount={todos.length} />
+      </div>
     </div>
   );
 }
