@@ -33,12 +33,23 @@ function App() {
     ]);
   };
 
+  const checkTodo = (id: Todo["id"]) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, checked: !todo.checked };
+        }
+        return todo;
+      })
+    );
+  };
+
   return (
     <div className="app_container">
       <div className="container">
         <Header todoCount={todos.length} />
         <TodoPanel addTodo={addTodo} />
-        <TodoList todos={todos} />
+        <TodoList todos={todos} checkTodo={checkTodo} />
       </div>
     </div>
   );
